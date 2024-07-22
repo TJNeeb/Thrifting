@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="Thrifting.css">
+<header class="header" id="header">
+    <div class="logo">     <a href="site.html"> <img src="SVSULOGO.png"></a>
+    </div>
+    <nav>
+      <ul>
+        <li>
+       <a href="savedItems.html">      Saved </a>
+        <a href="About me.html">          Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+<title>Cardinal Spots - Thrifting</title>
+
+
+
+
+ 
+
+
+
+<div class="photo">
+   
+<img src="Thriftheader.jpg">
+<div class="centeredtext">
+<h1>Thrift Stores</h1>
+
+</div>
+
+<body>
+    <div class="grid-container">
+        <div class="grid-item" data-id="9">
+
+            <img src="Platos.png">
+            <img src="Platos2.jpg">
+
+            
+            <div class="text" >
+                <h1><u>Platos Closet</u></h1>
+
+                </div>
+                <div class="text" >
+                    <h3>5206 Bay Rd, Saginaw, MI 48604</h3>
+                   <h3>Buy used goods</h3>
+                  <h3><a href="https://platoscloset.com/locations/saginaw-mi/"> Plato's Closet</a></h3>
+
+
+                    <button class="bookmark-btn"></button>
+
+
+                    </div>
+
+
+
+        </div>
+
+            <div class="grid-item" data-id="10">
+
+                <img src="VolunteersOfAmerica.jpg">
+                <img src="VOA2.png">
+
+                <div class="text">
+
+                    <h1><u>Volunteers of America</u></h1>
+
+                </div>
+
+                <div class="text">
+
+                    <h3>5204 Bay Rd, Saginaw, MI 48604</h3>
+                    <h3>Buy used goods</h3>
+                    <h3><a href="https://www.voami.org/">VOA</a></h3>
+
+                    <button class="bookmark-btn"></button>
+
+                </div>
+
+
+            </div>
+
+            <div class="grid-item"data-id="11">
+
+                <img src="Goodwill.jpg">
+                <img src="Goodwill2.jpg">
+
+                <div class="text">
+                        <h1><u>Goodwill</u></h1>
+
+                </div>
+
+                <div class="text">
+                    <h3>4675 Bay Rd, Saginaw, MI 48604</h3>
+                    <h3>Buy used goods</h3>
+                    <h3><a href="https://www.goodwillmidmichigan.org/">Goodwill</a></h3>
+
+                    <button class="bookmark-btn"></button>
+
+                </div>
+
+
+            </div>
+
+            <div class="grid-item">
+
+                <img src="Abelight.jpg">
+                <img src="Abelight2.jpg">
+
+                <div class="text">
+                    <h1><u>Abelight Thrift Shop</u></h1>
+
+                </div>
+
+                <div class="text">
+                    <h3>5119 Gratiot Rd, Saginaw, MI 48638</h3>
+                    <h3>Buy used goods</h3>
+                    <h3><a href="https://ablelight.org/thrift-stores/saginaw/?utm_source=google&utm_medium=listing&utm_campaign=ts_saginaw_mi">Abelight</a></h3>
+
+                    <button class="bookmark-btn"></button>
+
+                </div>
+
+
+                
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script>
+      /*
+     // Add click event listeners to bookmark buttons
+     document.querySelectorAll('.bookmark-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('bookmarked');
+
+                if (this.classList.contains('bookmarked')) {
+                    // Save the item if bookmarked
+                    saveItem(this.parentElement);
+                } else {
+                    // Unsave the item if unbookmarked
+                    unsaveItem(this.parentElement);
+                }
+            });
+        });
+
+        function saveItem(item) {
+            console.log('Item bookmarked:', item);
+            // Add your saving logic here (e.g., add to local storage)
+        }
+
+        function unsaveItem(item) {
+            console.log('Item unbookmarked:', item);
+            // Add your unsaving logic here (e.g., remove from local storage)
+        }
+        */
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+
+            document.querySelectorAll('.grid-item').forEach(item => {
+                const button = item.querySelector('.bookmark-btn');
+                const itemId = item.getAttribute('data-id');
+
+                if (savedItems.includes(itemId)) {
+                    button.classList.add('bookmarked');
+                }
+
+                button.addEventListener('click', function() {
+                    this.classList.toggle('bookmarked');
+                    if (this.classList.contains('bookmarked')) {
+                        saveItem(itemId, item);
+                    } else {
+                        unsaveItem(itemId);
+                    }
+                });
+            });
+
+            function saveItem(itemId, item) {
+                let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                if (!savedItems.includes(itemId)) {
+                    savedItems.push(itemId);
+                    localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                    localStorage.setItem(`savedItem-${itemId}`, item.innerHTML);
+                }
+            }
+
+            function unsaveItem(itemId) {
+                let savedItems = JSON.parse(localStorage.getItem('savedItems')) || [];
+                savedItems = savedItems.filter(id => id !== itemId);
+                localStorage.setItem('savedItems', JSON.stringify(savedItems));
+                localStorage.removeItem(`savedItem-${itemId}`);
+            }
+        });
+  </script>
+
+</body>
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
